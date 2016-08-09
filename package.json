@@ -1,0 +1,24 @@
+{
+  "name": "laughing-giggle",
+  "version": "1.0.0",
+  "description": "Travel detector for snowbirds",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wstant/laughing-giggle.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wstant/laughing-giggle/issues"
+  },
+  "homepage": "https://github.com/wstant/laughing-giggle#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.3.2"
+  }
+}
