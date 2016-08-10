@@ -6,6 +6,20 @@ nomadApp.apiUrl = 'https://nomadlist.com/api/v2/list/cities';
 
 // User Input --------------------------------------------
 
+var userPrice;
+var userClimate;
+var userActivity;
+
+nomadApp.userInput = function() {
+	$('#nomadForm').on('submit', function(e) {
+		e.preventDefault();
+		userPrice = $('.costInput').val();
+		userClimate = $('.climateInput').val();
+		userActivity = $('.activityInput').val();
+		nomadApp.getCities();
+	})
+}
+
 
 // API CALL --------------------------------------------
 
@@ -36,29 +50,52 @@ nomadApp.getCities = function() {
 		return filterDataByCost;
 	})
 	// CLIMATE FILTER ---------------------------------------
-	// .then
+
+	.then(function(data) {
+		var filterDataByClimate;
+		filterDataByClimate = data.filter(function(currentCity) {
+			if (userClimate === "cold") {
+				return currentCity.info.weather.temperature.celsius <= 16;
+			}
+			else if (userClimate === "warm") {
+				return currentCity.info.weather.temperature.celsius > 16 && currentCity.info.weather.temperature.celsius < 23;
+			}
+			else if (userClimate === "hot") {
+				return currentCity.info.weather.temperature.celsius >= 23;
+			}
+		});
+		return filterDataByClimate;
+	})
 
 	// ACTIVITY FILTER --------------------------------------
 	.then(function(data){
 		var orderDataByActivity = data;
-		if(userActivty === 'partying'){
+		if(userActivity === 'partying'){
+			orderDataByActivity = data.filter(function(currentCity) {
+				return currentCity.scores.nightlife >= 0.5;
+			});
 			orderDataByActivity.sort(function(a,b) {
 				return  b.scores.nightlife - a.scores.nightlife;
 			});
-		} 
-		else if(userActivty === 'working') {
+		}
+		else if(userActivity === 'working') {
+			orderDataByActivity = data.filter(function(currentCity) {
+				return currentCity.scores.places_to_work >= 0.5;
+			});
 			orderDataByActivity.sort(function(a,b){
 				return b.scores.places_to_work - a.scores.places_to_work;
 			});
 		}
-		else if(userActivty === 'relaxing') {
+		else if(userActivity === 'relaxing') {
+			orderDataByActivity = data.filter(function(currentCity) {
+				return currentCity.scores.leisure >= 0.5;
+			});
 			orderDataByActivity.sort(function(a,b){
 				return b.scores.leisure - a.scores.leisure;
 			});
 		}
-		console.log('if statement finished');
-		
-		})// End Activity Filter
+		console.log(orderDataByActivity);
+	})// End Activity Filter
 
 	// DISPLAY DATA -----------------------------------------
 	// .then 
@@ -73,7 +110,8 @@ nomadApp.getCities = function() {
 
 // INITIALIZE -------------------------------------------
 nomadApp.init = function(){
-	nomadApp.getCities();
+	// nomadApp.getCities();
+	nomadApp.userInput();
 };
 
 // DOCUMENT READY ---------------------------------------
