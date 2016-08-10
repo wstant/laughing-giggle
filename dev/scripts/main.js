@@ -41,7 +41,7 @@ nomadApp.getCities = function() {
 	// ACTIVITY FILTER --------------------------------------
 	.then(function(data){
 		var orderDataByActivity = data;
-		if(userActivty === 'partying'){
+		if(userActivty === 'partying' ){
 			orderDataByActivity.sort(function(a,b) {
 				return  b.scores.nightlife - a.scores.nightlife;
 			});
