@@ -94,16 +94,34 @@ nomadApp.getCities = function() {
 				return b.scores.leisure - a.scores.leisure;
 			});
 		}
-		console.log(orderDataByActivity);
+		return orderDataByActivity;
 	})// End Activity Filter
 
 	// DISPLAY DATA -----------------------------------------
-	// .then 
+	.then(function(data) {
+		nomadApp.displayData(data);
+	})
 	
 	.fail(function(error){
 		console.log(error);
 	});	
 };
+
+// DISPLAY DATA FUNCTION ------------------------------------
+nomadApp.displayData = function(finalResult) {
+	$('#result').empty();
+	var myTemplate = $("#myTemplate").html();
+	var template = Handlebars.compile(myTemplate);
+	var index = 1;
+
+	finalResult.forEach(function(eachCity) {
+		console.log(eachCity);
+		var finalTemplate = template(eachCity);
+		$("#result").append(finalTemplate);
+		index ++;
+	});
+};
+
 
 // LAZY LOAD CITIES ------------------------------------
 
