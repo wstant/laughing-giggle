@@ -5,6 +5,18 @@
 	<title>Nomad</title>
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="public/styles/style.css">
+	<!-- Handlebars Template -->
+	<script id="myTemplate" type="x-handlebars-template">
+	<div class="city">
+		<div class="cityOverlay">
+			<h2>{{info.city.name}}</h2>
+			<h3>{{info.country.name}}</h3>
+			<p>{{index}}</p>
+			<p>{{info.weather.temperature.celsius}}</p>
+		</div>
+
+	</div>
+	</script>
 
 </head>
 <body>
@@ -43,14 +55,15 @@
 
 
 <section class="result container">
-	<div class="result wrapper">
+	<div class="result wrapper" id="result">
 
 	
 	</div> <!-- /.result wrapper -->
 </section> <!-- /.result container -->
 
 
-
+	<!-- Handlebars cdn -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 	
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
