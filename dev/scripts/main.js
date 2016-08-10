@@ -5,7 +5,6 @@ var nomadApp = {};
 nomadApp.apiUrl = 'https://nomadlist.com/api/v2/list/cities';
 
 // User Input --------------------------------------------
-var userPrice = "expensive";
 
 
 // API CALL --------------------------------------------
@@ -34,44 +33,40 @@ nomadApp.getCities = function() {
 				return currentCity.cost.nomad.USD > 4624;
 			}
 		});
-		console.log(filterDataByCost);
 		return filterDataByCost;
 	})
 	// CLIMATE FILTER ---------------------------------------
-	.then
-
-	// MONTH FILTER -----------------------------------------
-	.then 
+	// .then
 
 	// ACTIVITY FILTER --------------------------------------
-	.then 
+	.then(function(data){
+		var orderDataByActivity = data;
+		if(userActivty === 'partying'){
+			orderDataByActivity.sort(function(a,b) {
+				return  b.scores.nightlife - a.scores.nightlife;
+			});
+		} 
+		else if(userActivty === 'working') {
+			orderDataByActivity.sort(function(a,b){
+				return b.scores.places_to_work - a.scores.places_to_work;
+			});
+		}
+		else if(userActivty === 'relaxing') {
+			orderDataByActivity.sort(function(a,b){
+				return b.scores.leisure - a.scores.leisure;
+			});
+		}
+		console.log('if statement finished');
+		
+		})// End Activity Filter
 
 	// DISPLAY DATA -----------------------------------------
-	.then 
+	// .then 
 	
 	.fail(function(error){
 		console.log(error);
 	});	
 };
-
-
-// .then(data => {
-// 	return filterDataByCost(data, userCostFilterParams);
-// })
-// .then(data => {
-// 	return filterDataByClimate(data, userClimateFilterParams);
-// })
-// .then(data => {
-// 	return filterDataByMonths(data, userMonthsFilterParams);
-// })
-// .then(data => {
-// 	return filterDataByActivity(data, userActivityFilterParams);
-// })
-// .then(data => {
-// 	displayData(data);
-// });
-
-
 
 // LAZY LOAD CITIES ------------------------------------
 
