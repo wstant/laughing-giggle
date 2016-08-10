@@ -5,7 +5,19 @@ var nomadApp = {};
 nomadApp.apiUrl = 'https://nomadlist.com/api/v2/list/cities';
 
 // User Input --------------------------------------------
-var userPrice = "expensive";
+var userPrice;
+var userClimate;
+var userActivity;
+
+nomadApp.userInput = function() {
+	$('#nomadForm').on('submit', function(e) {
+		e.preventDefault();
+		userPrice = $('.costInput').val();
+		userClimate = $('.climateInput').val();
+		userActivity = $('.activityInput').val();
+		nomadApp.getCities();
+	})
+}
 
 
 // API CALL --------------------------------------------
@@ -34,51 +46,43 @@ nomadApp.getCities = function() {
 				return currentCity.cost.nomad.USD > 4624;
 			}
 		});
-		console.log(filterDataByCost);
 		return filterDataByCost;
 	})
 	// CLIMATE FILTER ---------------------------------------
-	.then
-
-	// MONTH FILTER -----------------------------------------
-	.then 
+	.then(function(data) {
+		var filterDataByClimate;
+		filterDataByClimate = data.filter(function(currentCity) {
+			if (userClimate === "cold") {
+				return currentCity.info.weather.temperature.celsius <= 16;
+			}
+			else if (userClimate === "warm") {
+				return currentCity.info.weather.temperature.celsius > 16 && currentCity.info.weather.temperature.celsius < 23;
+			}
+			else if (userClimate === "hot") {
+				return currentCity.info.weather.temperature.celsius >= 23;
+			}
+		});
+		return filterDataByClimate;
+	})
 
 	// ACTIVITY FILTER --------------------------------------
-	.then 
+	// .then
 
 	// DISPLAY DATA -----------------------------------------
-	.then 
+	// .then
 	
 	.fail(function(error){
 		console.log(error);
 	});	
 };
 
-
-// .then(data => {
-// 	return filterDataByCost(data, userCostFilterParams);
-// })
-// .then(data => {
-// 	return filterDataByClimate(data, userClimateFilterParams);
-// })
-// .then(data => {
-// 	return filterDataByMonths(data, userMonthsFilterParams);
-// })
-// .then(data => {
-// 	return filterDataByActivity(data, userActivityFilterParams);
-// })
-// .then(data => {
-// 	displayData(data);
-// });
-
-
-
 // LAZY LOAD CITIES ------------------------------------
 
 
 // INITIALIZE -------------------------------------------
 nomadApp.init = function(){
-	nomadApp.getCities();
+	// nomadApp.getCities();
+	nomadApp.userInput();
 };
 
 // DOCUMENT READY ---------------------------------------
