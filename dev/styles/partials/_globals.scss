@@ -1,12 +1,76 @@
 
 // ---------- GLOBAL STYLING ------------
 
-.container {
-
-
+body {
+	background-color: $color-a;
+	font-size: 16px;
+	position: relative;
 }
 
 .wrapper {
 	max-width: 1100px;
 	margin: 0 auto;
+}
+
+
+// HEADER STYLES 
+
+header {
+	display: flex;
+	-webkit-display: flex;
+	flex-direction: row;
+	-webkit-flex-direction: row;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	align-items: center;
+	-webkit-align-items: center;
+}
+
+.site-title {
+	font-family: $header-font;
+	color: $color-b;
+	font-size: 2rem;
+	letter-spacing: 2px;
+	padding: 25px 25px;
+	margin: 0;
+	display: flex;
+	-webkit-display:flex;
+	flex-direction: row;
+	-webkit-flex-direction: row;
+	align-content: center;
+	-webkit-align-content: center;
+}
+
+header img {
+	height: 40px;
+	padding: 0 12px 0 5px;
+}
+
+.call-to-action {
+	padding: 25px 25px;
+}
+
+.cta-1{
+	font-family: $body-font;
+	font-size: 1.1rem;
+	font-weight: 300;
+	color: $color-e;
+	margin: 0;
+	letter-spacing: 1px;
+	padding-bottom: 8px;
+}
+
+.cta-2{
+	font-family: $header-font;
+	color: $color-b;
+	letter-spacing: 1px;
+	text-decoration: none;
+	margin: 0;
+	display: block;
+	text-align: right;
+	transition: color .5s;
+
+	&:hover {
+		color: $color-e;
+	}
 }

@@ -1,0 +1,70 @@
+
+// ---------- LANGUAGE FORM ------------
+
+form {
+	// background-color: $color-c;
+	max-width: 640px;
+	margin: 0 auto;
+	font-family: $body-font;
+	font-size: 2.5rem;
+	padding: 50px;
+	color: $color-e;
+	line-height: 175%;
+	letter-spacing: 1px;
+	display: flex;
+	-webkit-display: flex;
+	flex-direction: column;
+	-webkit-flex-direction: column;
+}
+
+select {
+	font-family: $body-font;
+	color: $color-d;
+	background: transparent;
+	border: none;
+	border-bottom: 2px dotted $color-d;
+	border-radius: 0;
+	 -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    overflow: hidden;
+}
+
+option {
+	padding: 10px;
+	background-color: $color-a;
+}
+
+.submit-form {
+	width: 100%;
+}
+
+.submit {
+	font-size: 1.3rem;
+	font-weight: 600;
+	letter-spacing: 1px;
+	display: block;
+	margin: 20px 0;
+	text-align: right;
+	text-transform: uppercase;
+	padding: 15px 30px;
+	border: none;
+	border-radius: 30px;
+	background-color: $color-b;
+	color: $color-e;
+	transition: background-color .5s;
+
+	&:hover {
+		background-color: $color-d;
+	}
+}
+
+.form.container {
+	height: calc(100vh - 103px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
