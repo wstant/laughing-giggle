@@ -8,13 +8,32 @@
 	<!-- Handlebars Template -->
 	<script id="myTemplate" type="x-handlebars-template">
 	<div class="city">
-		<div class="cityOverlay">
+		<div class="cityOverlay" style="background-image: url(https://nomadlist.com{{media.image.[500]}})">
 			<h2>{{info.city.name}}</h2>
 			<h3>{{info.country.name}}</h3>
-			<p>{{index}}</p>
+			<p>$ {{cost.shortTerm.USD}}/mo</p>
 			<p>{{info.weather.temperature.celsius}}</p>
 		</div>
 
+		<div class="cityInfo">
+			<div class="bar">
+				<div class="wifi">
+					<p>{{scores.free_wifi_available}}</p>
+				</div>
+			</div>
+			<div class="bar">
+				<div class="friendly">
+					<p>{{scores.friendly_to_foreigners}}</p>
+				</div>
+			</div>
+			<div class="bar">
+				<div class="safety">
+					<p>{{scores.safety}}</p>
+				</div>
+			</div>
+			
+		
+		</div>
 	</div>
 	</script>
 
@@ -64,9 +83,10 @@
 
 	<!-- Handlebars cdn -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-	
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Lazy Load -->
+	<script src="jquery.lazyload.js"></script>
 	<!-- JavaScript -->
 	<script src="dev/scripts/main.js"></script>
 
