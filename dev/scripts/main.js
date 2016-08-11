@@ -112,16 +112,29 @@ nomadApp.displayData = function(finalResult) {
 	$('#result').empty();
 	var myTemplate = $("#myTemplate").html();
 	var template = Handlebars.compile(myTemplate);
-	var index = 1;
-
+	var wifi;
 	finalResult.forEach(function(eachCity) {
-		console.log(eachCity);
+
+		// WIFI SCORE
+		wifi = (eachCity.scores.free_wifi_available * 100) + "%";
+		console.log(wifi);
+			$('.wifi').css("width", wifi);
+
+
 		var finalTemplate = template(eachCity);
 		$("#result").append(finalTemplate);
-		index ++;
+
+		wifi = null;
+
+		// FRIENDLY SCORE 
+
+		// SAFETY SCORE
+
+		// var imageUrl = 'url(https://nomadlist.com' + eachCity.media.image['500'] + ')';
+
+		// $('.cityOverlay').css('background-image', 'url(' + imageUrl + ')');
 	});
 };
-
 
 // LAZY LOAD CITIES ------------------------------------
 
