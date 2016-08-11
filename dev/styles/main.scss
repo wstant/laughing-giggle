@@ -5,11 +5,22 @@
 // SETUP 
 @import "partials/setup";
 
+// ASSETS
+@import "partials/assets";
+
 // GLOBAL STYLING
 @import "partials/globals";
 
+// LANGUAGE FORM 
+@import "partials/languageForm";
+
 // CITY RESULTS
 @import "partials/cityResult";
+
+// LOADING SCREEN
+@import "partials/loadingScreen";
+
+
 
 
 

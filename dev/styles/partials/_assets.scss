@@ -1,0 +1,40 @@
+
+// ---------- ASSETS ------------
+
+// TYPOGRAPHY -------------------
+
+// Lovelo - Solid
+@font-face { 
+	font-family: 'lovelo';
+	src: url('../fonts/lovelo_black-webfont.woff2') format('woff2'),
+		 url('../fonts/lovelo_black-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+} 
+
+$header-font: 'lovelo', sans-serif;
+
+// Lovelo - Outline 
+@font-face {
+	font-family: 'lovelo-line';
+	src: url('../fonts/lovelo_line_bold-webfont.woff2') format('woff2'),
+		 url('../fonts/lovelo_line_bold-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+$header-font-lines: 'lovelo-line', sans-serif;
+
+// Open Sans 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600,800italic);
+
+$body-font: 'Open Sans', sans-serif;
+
+
+// COLOURS ----------------------
+
+$color-a: #2C3E50;				// Charcoal
+$color-b: #03A678;				// Green (Munshell) 
+$color-c: #E3DAC9;				// Bone
+$color-d: #EF4836;				// Carmine Pink
+$color-e: #FFFFFF;				// White

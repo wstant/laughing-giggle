@@ -22,23 +22,22 @@
 				</div>
 			</div>
 			<div class="bar">
-				<div class="friendly">
+				<div class="friendly" style="width:{{friendly}}%">
 					<p>{{scores.friendly_to_foreigners}}</p>
 				</div>
 			</div>
 			<div class="bar">
-				<div class="safety">
+				<div class="safety" style="width:{{safety}}%" >
 					<p>{{scores.safety}}</p>
 				</div>
 			</div>
 			<div> 
 				<div class="infoText">
 					<p> Months to Visit:</p>
-					<p>{{info.monthToVisit}}</p>
+					<p>{{months}}</p>
 				</div>
 			</div> 
 			
-		
 		</div>
 	</div>
 	</script>
@@ -46,59 +45,88 @@
 </head>
 <body>
 
-<header>
-	<img class="logo">
-	<a class="nomad-main-site" href="">Nomad Travel</a>
+<header class="">
+	<h1 class="site-title">
+		<div>Nomad</div> 
+		<div class="logo-container">
+			<img class="logo" src="public/images/logo-2.png" alt="Plane flying around the globe.">
+			<!-- "Travel" by Nerea Martínez Orduña, http://bit.ly/2bbaStQ -->
+		</div> 
+		<div>Travel</div>
+	</h1> <!-- /.site-title -->
+
+	<div class="call-to-action">
+		<p class="cta-1">Already know your destination?</p>
+		<a href="" class="cta-2">Start planning!</a>
+	</div> <!-- /.call-to-action -->
+
 </header> 
 
 <section class="form container">
 	<div class="form wrapper">
-		<form action="" id="nomadForm">
-			I'm looking for a
-			<select class="costInput">
-				<option value="cheap" class="cheap">Cheap</option>
-				<option value="affordable" class="cheap">Affordable</option>
-				<option value="expensive" class="cheap">Expensive</option>
-			</select>
-			vacation in a
-			<select class="climateInput">
-				<option value="hot">Hot</option>
-				<option value="warm">Warm</option>
-				<option value="cold">Cold</option>
-			</select>
-			and I will be
-			<select class="activityInput">
-				<option value="partying">Partying</option>
-				<option value="working">Working</option>
-				<option value="relaxing">Relaxing</option>
-			</select>
-			.
-			<input type="submit" class="submit" value="Find a city!">
+		<form id="nomadForm">
+			<div>
+				I'm looking for a
+				<select class="costInput">
+					<option value="expensive" class="cheap">expensive</option>
+					<option value="affordable" class="cheap">affordable</option>
+					<option value="cheap" class="cheap">cheap</option>
+					
+				</select>
+				vacation in a
+				<select class="climateInput">
+					<option value="warm">warm</option>
+					<option value="cold">cold</option>
+					<option value="hot">hot</option>
+					
+				</select>
+				climate to
+				<select class="activityInput">
+					<option value="partying">party</option>
+					<option value="working">work</option>
+					<option value="relaxing">relax</option>
+				</select>
+				.
+			</div>
+			<div class="submit-form">
+				<input type="submit" class="submit" value="Find a city!">
+			</div>
 		</form>
 	</div> <!-- /.form wrapper -->
 </section> <!-- /.form container -->
 
 
-<section class="result container">
+<section id="result-container" class="result container">
 	<div class="result wrapper" id="result">
 
 	
 	</div> <!-- /.result wrapper -->
+	
+	<button class="see_more">See More</button>
+
 </section> <!-- /.result container -->
+
+
+<!-- Loading Screen -->
+<div class="loading-screen">
+	<div class="loading-container">
+		<!-- <img src="public/images/globe-cropped.svg" alt="globe"> -->
+
+	</div> <!-- /.svg.container -->
+</div>
 
 
 	<!-- Handlebars cdn -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<!-- Scroll Reveal -->
-	<script src="https://cdn.jsdelivr.net/scrollreveal.js/3.3.1/scrollreveal.min.js"></script>
+	<!-- Smooth Scroll -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/1.7.2/jquery.smooth-scroll.min.js"></script>
 	<!-- JavaScript -->
 	<script src="dev/scripts/main.js"></script>
 
 	<script>
-		// window.sr = ScrollReveal();
-		// sr.reveal('.city');
+		
 	</script>
 
 </body>
