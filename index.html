@@ -17,7 +17,7 @@
 
 		<div class="cityInfo">
 			<div class="bar">
-				<div class="wifi">
+				<div class="wifi" style="width:{{percentage}}%">
 					<p>{{scores.free_wifi_available}}</p>
 				</div>
 			</div>
@@ -31,6 +31,12 @@
 					<p>{{scores.safety}}</p>
 				</div>
 			</div>
+			<div> 
+				<div class="infoText">
+					<p> Months to Visit:</p>
+					<p>{{info.monthToVisit}}</p>
+				</div>
+			</div> 
 			
 		
 		</div>
@@ -85,10 +91,15 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<!-- Lazy Load -->
-	<script src="jquery.lazyload.js"></script>
+	<!-- Scroll Reveal -->
+	<script src="https://cdn.jsdelivr.net/scrollreveal.js/3.3.1/scrollreveal.min.js"></script>
 	<!-- JavaScript -->
 	<script src="dev/scripts/main.js"></script>
+
+	<script>
+		// window.sr = ScrollReveal();
+		// sr.reveal('.city');
+	</script>
 
 </body>
 </html>

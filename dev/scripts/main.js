@@ -115,38 +115,73 @@ nomadApp.displayData = function(finalResult) {
 	var wifi;
 	var cityName;
 	finalResult.forEach(function(eachCity) {
-		cityName = eachCity.info.city.name;
-		// WIFI SCORE
-		wifi = (eachCity.scores.free_wifi_available * 100) + "%";
-		console.log(wifi);
-			$('.wifi').css("width", wifi);
 
+
+		// MONTHS TO VISIT 
+		var goodMonths = eachCity.info.monthsToVisit.map(function(month) {
+			if (month === 1) {
+				month = 'January';
+			}
+			else if (month === 2) {
+				month = 'February';
+			}
+			else if (month === 3) {
+				month = 'March';
+			} 
+			else if (month === 4) {
+				month = 'April';
+			}
+			else if (month === 5) {
+				month = 'May';
+			} 
+			else if (month === 6) {
+				month = 'June';
+			}
+			else if (month === 7) {
+				month = 'July';
+			}
+			else if (month === 8) {
+				month = 'August';
+			}
+			else if (month === 9) {
+				month = 'September';
+			}
+			else if (month === 10) {
+				month = 'October';
+			}
+			else if (month === 11) {
+				month = 'November';
+			}
+			else if (month === 12) {
+				month = 'December';
+			}
+			
+		});
+
+
+		
+		Handlebars.registerHelper('percentage', function() {
+			return eachCity.scores.free_wifi_available * 100;
+		});
 
 		var finalTemplate = template(eachCity);
 		$("#result").append(finalTemplate);
 
-		wifi = null;
-
 		// FRIENDLY SCORE 
 
 		// SAFETY SCORE
-
-		// var imageUrl = 'url(https://nomadlist.com' + eachCity.media.image['500'] + ')';
-
-		// $('.cityOverlay').css('background-image', 'url(' + imageUrl + ')');
 	});
 };
-
-// LAZY LOAD CITIES ------------------------------------
 
 
 // INITIALIZE -------------------------------------------
 nomadApp.init = function(){
-	// nomadApp.getCities();
 	nomadApp.userInput();
 };
 
 // DOCUMENT READY ---------------------------------------
 $(function() {
 	nomadApp.init();
+	window.sr = ScrollReveal();
+	sr.reveal('.city');
 });
