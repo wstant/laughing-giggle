@@ -1,5 +1,5 @@
 
-// ---------- MANIFEST ------------
+// ---------- CITY RESULTS ------------
 
 .bar {
 	width: 100%;
@@ -8,4 +8,24 @@
 
 .wifi {
 	background-color: goldenrod;
+}
+
+.city {
+	display: flex;
+	-webkit-display: flex;
+	flex-direction: row;
+	-webkit-flex-direction: row;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+}
+
+.cityOverlay {
+	background-repat: no-repeat;
+	background-size: cover;
+	width: 50%;
+	height: 300px;
+}
+
+.cityInfo {
+	width: 45%;
 }
