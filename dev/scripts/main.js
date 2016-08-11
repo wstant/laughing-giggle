@@ -113,8 +113,9 @@ nomadApp.displayData = function(finalResult) {
 	var myTemplate = $("#myTemplate").html();
 	var template = Handlebars.compile(myTemplate);
 	var wifi;
+	var cityName;
 	finalResult.forEach(function(eachCity) {
-
+		cityName = eachCity.info.city.name;
 		// WIFI SCORE
 		wifi = (eachCity.scores.free_wifi_available * 100) + "%";
 		console.log(wifi);
