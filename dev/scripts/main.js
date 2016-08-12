@@ -166,8 +166,7 @@ nomadApp.displayData = function(finalResult) {
 
 
 
-		
-=======
+
 		// WIFI SCORE
 
 		Handlebars.registerHelper('percentage', function() {
@@ -187,7 +186,9 @@ nomadApp.displayData = function(finalResult) {
 		var finalTemplate = template(eachCity);
 		$("#result").append(finalTemplate);
 	});
+	});
 };
+
 
 $('.see_more').on('click', function() {
 	nomadApp.displayData(nomadApp.currentData);
