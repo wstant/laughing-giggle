@@ -141,9 +141,6 @@ nomadApp.displayData = function(finalResult) {
 	var template = Handlebars.compile(myTemplate);
 	var wifi;
 
-	var cityName;
-	finalResult.forEach(function(eachCity) {
-
 
 	// Displays first 10 objects in array
 	nomadApp.splicedData = finalResult.splice(0,10);
@@ -186,7 +183,7 @@ nomadApp.displayData = function(finalResult) {
 		var finalTemplate = template(eachCity);
 		$("#result").append(finalTemplate);
 	});
-	});
+
 };
 
 
