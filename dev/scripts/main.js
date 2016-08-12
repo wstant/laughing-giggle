@@ -4,6 +4,21 @@
 var nomadApp = {};
 nomadApp.apiUrl = 'https://nomadlist.com/api/v2/list/cities';
 
+nomadApp.months = {
+	'1': ' January',
+	'2': ' February',
+	'3': ' March',
+	'4': ' April',
+	'5': ' May',
+	'6': ' June',
+	'7': ' July',
+	'8': ' August',
+	'9': ' September',
+	'10': ' October',
+	'11': ' November',
+	'12': ' December'
+}
+
 // User Input --------------------------------------------
 
 var userPrice;
@@ -13,10 +28,13 @@ var userActivity;
 nomadApp.userInput = function() {
 	$('#nomadForm').on('submit', function(e) {
 		e.preventDefault();
+		$('#result').empty();
 		userPrice = $('.costInput').val();
 		userClimate = $('.climateInput').val();
 		userActivity = $('.activityInput').val();
 		nomadApp.getCities();
+		// Loading Screen appears
+    	$('.loading-screen').fadeIn(0);
 	})
 }
 
@@ -31,6 +49,15 @@ nomadApp.getCities = function() {
 	}).then(function(nomadCities) {
 		nomadApp.cities = nomadCities.result;
 		// console.log(nomadApp.cities);
+
+		// Loading Screen fades out
+		$('.loading-screen').fadeOut(10000, function(){
+			$.smoothScroll({
+				scrollTarget:"#result-container"
+			});
+		});
+      
+
 		return nomadApp.cities;
 	})
 	// PRICE FILTER -----------------------------------------
@@ -109,69 +136,62 @@ nomadApp.getCities = function() {
 
 // DISPLAY DATA FUNCTION ------------------------------------
 nomadApp.displayData = function(finalResult) {
-	$('#result').empty();
+	
 	var myTemplate = $("#myTemplate").html();
 	var template = Handlebars.compile(myTemplate);
 	var wifi;
+
 	var cityName;
 	finalResult.forEach(function(eachCity) {
 
 
+	// Displays first 10 objects in array
+	nomadApp.splicedData = finalResult.splice(0,10);
+	nomadApp.currentData = finalResult;
+
+
+	nomadApp.splicedData.forEach(function(eachCity) {
+
+
+
 		// MONTHS TO VISIT 
+
 		var goodMonths = eachCity.info.monthsToVisit.map(function(month) {
-			if (month === 1) {
-				month = 'January';
-			}
-			else if (month === 2) {
-				month = 'February';
-			}
-			else if (month === 3) {
-				month = 'March';
-			} 
-			else if (month === 4) {
-				month = 'April';
-			}
-			else if (month === 5) {
-				month = 'May';
-			} 
-			else if (month === 6) {
-				month = 'June';
-			}
-			else if (month === 7) {
-				month = 'July';
-			}
-			else if (month === 8) {
-				month = 'August';
-			}
-			else if (month === 9) {
-				month = 'September';
-			}
-			else if (month === 10) {
-				month = 'October';
-			}
-			else if (month === 11) {
-				month = 'November';
-			}
-			else if (month === 12) {
-				month = 'December';
-			}
-			
+			return nomadApp.months[month];
+		});
+
+		Handlebars.registerHelper('months', function() {
+			return goodMonths;
 		});
 
 
+
 		
+=======
+		// WIFI SCORE
+
 		Handlebars.registerHelper('percentage', function() {
 			return eachCity.scores.free_wifi_available * 100;
 		});
 
-		var finalTemplate = template(eachCity);
-		$("#result").append(finalTemplate);
-
-		// FRIENDLY SCORE 
+		// FRIENDLY SCORE
+		Handlebars.registerHelper('friendly', function() {
+			return eachCity.scores.friendly_to_foreigners * 100;
+		}); 
 
 		// SAFETY SCORE
+		Handlebars.registerHelper('safety', function() {
+			return eachCity.scores.safety * 100;
+		}); 
+		
+		var finalTemplate = template(eachCity);
+		$("#result").append(finalTemplate);
 	});
 };
+
+$('.see_more').on('click', function() {
+	nomadApp.displayData(nomadApp.currentData);
+});
 
 
 // INITIALIZE -------------------------------------------
@@ -182,6 +202,4 @@ nomadApp.init = function(){
 // DOCUMENT READY ---------------------------------------
 $(function() {
 	nomadApp.init();
-	window.sr = ScrollReveal();
-	sr.reveal('.city');
 });
