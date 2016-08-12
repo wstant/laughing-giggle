@@ -2,38 +2,60 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Nomad</title>
+	<title>Nomad Travel</title>
+
+	<!-- Viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="public/styles/style.css">
 	<!-- Handlebars Template -->
 	<script id="myTemplate" type="x-handlebars-template">
+
 	<div class="city">
+
 		<div class="cityOverlay" style="background-image: url(https://nomadlist.com{{media.image.[500]}})">
-			<h2>{{info.city.name}}</h2>
-			<h3>{{info.country.name}}</h3>
-			<p>$ {{cost.shortTerm.USD}}/mo</p>
-			<p>{{info.weather.temperature.celsius}}</p>
+			<div class="city-name">
+				<h3>{{info.city.name}}</h3>
+				<h4>{{info.country.name}}</h4>
+			</div>
+			<div class="dimmer"></div>
+			<p class="city-cost">$ {{cost.shortTerm.USD}}/mo</p>
+			<p class="city-temp">{{info.weather.temperature.celsius}}	&deg;C</p>
+
 		</div>
 
+
 		<div class="cityInfo">
-			<div class="bar">
-				<div class="wifi" style="width:{{percentage}}%">
-					<p>{{scores.free_wifi_available}}</p>
+			<div class="info-container">
+				<p class="info-text wifi-text">Wifi Availability:</p>
+				<div class="bar">
+					<div class="wifi" style="width:{{percentage}}%">
+						<p class="hover-text">{{percentage}}%</p>
+					</div>
 				</div>
 			</div>
-			<div class="bar">
-				<div class="friendly" style="width:{{friendly}}%">
-					<p>{{scores.friendly_to_foreigners}}</p>
+
+			<div class="info-container">
+				<p class="info-text friendly-text">Friendly to foreigners:</p>
+				<div class="bar">
+					<div class="friendly" style="width:{{friendly}}%">
+						<p class="hover-text">{{friendly}}%</p>
+					</div>
 				</div>
 			</div>
-			<div class="bar">
-				<div class="safety" style="width:{{safety}}%" >
-					<p>{{scores.safety}}</p>
+
+			<div class="info-container">
+				<p class="info-text safety-text">Safety:</p>
+				<div class="bar">
+					<div class="safety" style="width:{{safety}}%" >
+						<p class="hover-text">{{safety}}%</p>
+					</div>
 				</div>
 			</div>
+
 			<div> 
-				<div class="infoText">
-					<p> Months to Visit:</p>
+				<div class="info-month">
+					<p class="info-text"> Months to Visit:</p>
 					<p>{{months}}</p>
 				</div>
 			</div> 
@@ -62,6 +84,7 @@
 
 </header> 
 
+<!-- Natural Language Form -->
 <section class="form container">
 	<div class="form wrapper">
 		<form id="nomadForm">
@@ -95,22 +118,34 @@
 	</div> <!-- /.form wrapper -->
 </section> <!-- /.form container -->
 
-
+<!-- Result Container -->
 <section id="result-container" class="result container">
-	<div class="result wrapper" id="result">
-
-	
+	<div class="result wrapper">
+		<h2>Choose a Destination</h2>
+		<div id="result">
+			<!-- This is where we append the result template!  -->
+		</div> <!-- /#result -->
+		<button class="see_more">See More Cities</button>
 	</div> <!-- /.result wrapper -->
-	
-	<button class="see_more">See More</button>
-
 </section> <!-- /.result container -->
 
 
+<!-- Footer -->
+<footer>
+	<div>
+		<p>© 2016 All rights reserved.</p>
+	</div>
+	<div>
+		<p>Created by <a href="http://willstanton.io">Will Stanton</a>, <a href="http://www.kseniacodes.io">Ksenia Veriguina</a>, and <a href="http://www.jentaylorcodes.com/">Jen Taylor</a>.</p>
+	</div>
+</footer>
+
 <!-- Loading Screen -->
 <div class="loading-screen">
-	<div class="loading-container">
-		<!-- <img src="public/images/globe-cropped.svg" alt="globe"> -->
+	<div class="loading-container" id="loading-container">
+		
+
+		<!-- "Globe" by artworkbean, http://bit.ly/2blsHUj -->
 
 	</div> <!-- /.svg.container -->
 </div>
@@ -122,12 +157,13 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Smooth Scroll -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/1.7.2/jquery.smooth-scroll.min.js"></script>
-	<!-- JavaScript -->
+	<!-- Lazy Line Painter -->
+    <script src="public/scripts/jquery.lazylinepainter-1.7.0.js"></script>
+    <!-- Laxy Line Painter SVG -->
+    <script src="public/scripts/loading-page-js.js"></script>
+    <!-- JavaScript -->
 	<script src="dev/scripts/main.js"></script>
-
-	<script>
-		
-	</script>
+	
 
 </body>
 </html>
