@@ -24,6 +24,12 @@ header {
 	-webkit-justify-content: space-between;
 	align-items: center;
 	-webkit-align-items: center;
+
+	@media all and (max-width: 700px) {
+		justify-content: space-around;
+		padding-top: 25px;
+	}
+
 }
 
 .site-title {
@@ -39,6 +45,10 @@ header {
 	-webkit-flex-direction: row;
 	align-content: center;
 	-webkit-align-content: center;
+
+	@media all and (max-width: 400px) {
+		font-size: 1.7rem;
+	}
 }
 
 header img {
@@ -48,6 +58,10 @@ header img {
 
 .call-to-action {
 	padding: 25px 25px;
+
+	@media all and (max-width: 700px) {
+		display: none;
+	}
 }
 
 .cta-1{

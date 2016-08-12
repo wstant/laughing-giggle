@@ -1,22 +1,63 @@
 
 // ---------- CITY RESULTS ------------
 
-.bar {
-	width: 100%;
-	background-color: darkseagreen;
+#result-container {
+	display: none;
 }
 
-.wifi {
-	background-color: goldenrod;
+.result.wrapper {
+	background-color: $color-e;
+	padding: 50px;
+
+	@media all and (max-width: 550px) {
+		padding: 25px;	
+	}
 }
 
-.friendly {
-	background-color: plum;
+h2 {
+	font-family: $header-font;
+	color: $color-a;
+	text-align: center;
+	font-size: 2.5rem;
+
+	@media all and (max-width: 400px) {
+		font-size: 2rem;
+		margin: 15px 0;
+	}
 }
 
-.safety {
-	background-color: papayawhip;
+// See More Cities Button
+.see_more {
+	font-size: 1.3rem;
+	font-weight: 600;
+	letter-spacing: 2px;
+	display: block;
+	margin: 0 auto;
+	margin-top: 25px;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 15px 30px;
+	border: none;
+	border-radius: 30px;
+	background-color: $color-b;
+	color: $color-e;
+	transition: background-color .5s;
+
+	&:hover {
+		background-color: $color-d;
+	}
+
+	@media all and (max-width: 550px) {
+		font-size: 1rem;
+	}
+
+	@media all and (max-width: 400px) {
+		font-size: .8rem;	
+	}
+
 }
+
+// CITY CONTAINER
 
 .city {
 	display: flex;
@@ -25,15 +66,187 @@
 	-webkit-flex-direction: row;
 	justify-content: space-between;
 	-webkit-justify-content: space-between;
+	padding: 20px 0;
+
+	@media all and (max-width: 550px) {
+		flex-direction: column;
+	}
 }
 
+// CITY IMAGE 
+
 .cityOverlay {
-	background-repat: no-repeat;
+	background-repeat: no-repeat;
 	background-size: cover;
+	background-position: 50%;
+	border-radius: 5px;
 	width: 50%;
 	height: 300px;
+	position: relative;
+
+	display: flex;
+	-webkit-display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-content: center;
+
+	@media all and (max-width: 550px) {
+		width: 100%;
+	}
 }
+
+.city-name {
+	z-index: 100;
+}
+
+.cityOverlay .dimmer {
+	position: absolute;
+	border-radius: 5px;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.3);
+}
+
+.cityOverlay h3, .cityOverlay h4 {
+	font-family: $header-font;
+	text-align: center;
+	color: $color-e;
+	margin: 0 auto;
+}
+
+.cityOverlay h3 {
+	font-size: 2rem;
+}
+
+.cityOverlay h4 {
+	font-size: 1.3rem;
+}
+
+.cityOverlay p {
+	font-family: $body-font;
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: $color-e;
+	margin: 0;
+	padding-top: 10px;
+}
+
+.cityOverlay .city-cost {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding-left: 10px;
+}
+
+.cityOverlay .city-temp {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding-right: 10px;
+}
+
+// CITY INFORMATION 
 
 .cityInfo {
 	width: 45%;
+	padding: 25px 25px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	@media all and (max-width: 550px) {
+		width: 100%;
+	}
+
 }
+
+.cityInfo p {
+	margin: 0;
+}
+
+.cityInfo .info-container {
+	cursor: pointer;
+
+	@media all and (max-width: 550px) {
+		width: 100%;
+		padding-top: 10px;
+	}
+}
+
+.info-container:hover .hover-text{
+		opacity: 1;
+}
+
+.cityInfo .info-text {
+	font-family: $body-font;
+	font-size: 1.1rem;
+	font-weight: 600;
+	padding-bottom: 5px;
+	text-transform: uppercase;
+
+	@media all and (max-width: 700px) {
+		font-size: 1rem;
+	}
+}
+
+.cityInfo .info {
+	padding: 10px;
+}
+
+.bar {
+	color: $color-e;
+	width: 100%;
+	background-color: $color-c;
+	border-radius: 5px;
+}
+
+.wifi {
+	background-color: $color-b;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.wifi-text {
+	color: $color-b;
+}
+
+.friendly {
+	background-color: $color-d;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.friendly-text {
+	color: $color-d;
+}
+
+.safety {
+	background-color: $color-b;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.safety-text {
+	color: $color-b;
+}
+
+.info-month {
+	color: $color-a;
+
+	@media all and (max-width: 550px) {
+		width: 100%;
+		padding-top: 10px;
+	}
+}
+
+.hover-text {
+	opacity: 0;
+	transition: opacity .5s;
+	padding-left: 5px;
+}
+
