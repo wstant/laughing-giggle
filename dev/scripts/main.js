@@ -28,6 +28,7 @@ var userActivity;
 nomadApp.userInput = function() {
 	$('#nomadForm').on('submit', function(e) {
 		e.preventDefault();
+		$('.see_more').removeClass('hidden');
 		$('#result').empty();
     	$('.loading-screen').show();
 
@@ -192,6 +193,10 @@ nomadApp.displayData = function(finalResult) {
 		var finalTemplate = template(eachCity);
 		$("#result").append(finalTemplate);
 	});
+
+	if (finalResult.length === 0) {
+		$('.see_more').addClass('hidden');
+	}
 
 };
 
