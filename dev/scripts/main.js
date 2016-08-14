@@ -28,6 +28,7 @@ var userActivity;
 nomadApp.userInput = function() {
 	$('#nomadForm').on('submit', function(e) {
 		e.preventDefault();
+		$('.see_more').removeClass('hidden');
 		$('#result').empty();
     	$('.loading-screen').show();
 
@@ -150,12 +151,15 @@ nomadApp.displayData = function(finalResult) {
 	var template = Handlebars.compile(myTemplate);
 	var wifi;
 
+
 	// Displays first 10 objects in array
 	nomadApp.splicedData = finalResult.splice(0,10);
 	nomadApp.currentData = finalResult;
 
 
 	nomadApp.splicedData.forEach(function(eachCity) {
+
+
 
 		// MONTHS TO VISIT 
 
@@ -167,7 +171,11 @@ nomadApp.displayData = function(finalResult) {
 			return goodMonths;
 		});
 
+
+
+
 		// WIFI SCORE
+
 		Handlebars.registerHelper('percentage', function() {
 			return eachCity.scores.free_wifi_available * 100;
 		});
@@ -185,7 +193,13 @@ nomadApp.displayData = function(finalResult) {
 		var finalTemplate = template(eachCity);
 		$("#result").append(finalTemplate);
 	});
+
+	if (finalResult.length === 0) {
+		$('.see_more').addClass('hidden');
+	}
+
 };
+
 
 $('.see_more').on('click', function() {
 	nomadApp.displayData(nomadApp.currentData);
