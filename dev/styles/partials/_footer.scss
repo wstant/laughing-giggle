@@ -37,6 +37,11 @@ footer p {
 	}
 }
 
+footer span a {
+	color: $color-b;
+	font-weight: 600; 
+}
+
 footer a {
 	text-decoration: none;
 	color: $color-e;
